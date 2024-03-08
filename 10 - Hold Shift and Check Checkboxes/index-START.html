@@ -97,6 +97,44 @@
   </div>
 
 <script>
+// I have implemented this solution myself, without watching the video
+// it works, not sure if its the best way to implement it
+  let lastChecked = null;
+
+  // we get all of the checkboxes
+  const checkboxes = Array.from(document.querySelectorAll('input'));
+
+  // for each checkbox we check if it's been clicked, if its not checked yet we set lastChecked
+  // it to the first checkbox 
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', event => {
+    if (!lastChecked) {
+      lastChecked = checkbox;
+      
+      return;
+    }
+
+    // if shift its been presed we find the start checkbox and end endox indexes
+    if (event.shiftKey) {
+      const start = checkboxes.indexOf(checkbox);
+      const end = checkboxes.indexOf(lastChecked);
+
+      const min = Math.min(start, end);
+      const max = Math.max(start, end);
+
+      // we need to have an array of only the checkboxes that need to be checked
+      const checkBoxesToBeChecked = checkboxes.slice(min, max + 1);
+
+      // for each of the arrays to be checked, we check them
+      checkBoxesToBeChecked.forEach(checkbox => checkbox.checked = true)
+
+    }
+
+    // after having clicked a checkbox, this clicked checkbox becomes the 
+    // last checkbox to have been clicked
+    lastChecked = checkbox;
+
+  }))
+  
 </script>
 </body>
 </html>
