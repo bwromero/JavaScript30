@@ -22,25 +22,58 @@
 
     // Interpolated
 
+    console.log('this is a %s string', 'concatenated')
+
     // Styled
 
     // warning!
 
+    console.warn("this is a warning string");
+
     // Error :|
+    console.error('this is an error string')
 
     // Info
 
+    console.info('this is an info string')
+
     // Testing
+
+    console.assert(1 === 5, '1 is not equal to 5 so it will show an error string on console')
 
     // clearing
 
     // Viewing DOM Elements
 
+    const p = document.querySelector('p');
+    console.log(p);
+
     // Grouping together
+
+    dogs.forEach(dog => {
+      console.groupCollapsed(dog.name);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`{dog.name}`)
+    })
 
     // counting
 
+
+    // any way to push all this object in a easier way?
+    dogs.push({ name: 'Snickers', age: 5 });
+    dogs.push({ name: 'Snickers', age: 4 });
+    dogs.push({ name: 'Snickers', age: 3 });
+    dogs.push({ name: 'Snickers', age: 2 });
+    dogs.forEach(dog => {
+      console.count(dog.name)
+    })
+
+
     // timing
+
+    console.table(dogs)
 
   </script>
 </body>
